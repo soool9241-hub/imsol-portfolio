@@ -66,22 +66,22 @@ export default function Nav() {
             : "bg-transparent"
         }`}
       >
-        <div className={`max-w-6xl mx-auto px-4 flex items-center gap-6 transition-all duration-500 ${
-          scrolled ? "h-12" : "h-16"
+        <div className={`max-w-6xl mx-auto px-3 md:px-6 flex items-center gap-3 md:gap-6 transition-all duration-500 ${
+          scrolled ? "h-12" : "h-14 md:h-16"
         }`}>
           <button
             onClick={() => scrollTo("소개")}
-            className="font-mono font-bold text-primary text-lg shrink-0 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(64,145,108,0.6)]"
+            className="font-mono font-bold text-primary text-sm md:text-lg shrink-0 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(64,145,108,0.6)]"
           >
             SOL.
           </button>
 
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
+          <div className="flex items-center gap-0.5 md:gap-1 overflow-x-auto scrollbar-none flex-nowrap">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
-                className={`relative font-mono text-xs px-3 py-1.5 whitespace-nowrap transition-colors duration-300 animated-underline ${
+                className={`relative font-mono text-[10px] md:text-xs px-2 md:px-3 py-1 md:py-1.5 whitespace-nowrap transition-colors duration-300 animated-underline ${
                   activeSection === item
                     ? "text-foreground"
                     : "text-dim hover:text-muted"

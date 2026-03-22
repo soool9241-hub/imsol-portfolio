@@ -9,8 +9,8 @@ export default function Journey() {
   const lastIndex = journey.length - 1;
 
   return (
-    <section id="경력" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section id="경력" className="py-20 px-6">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader label="JOURNEY" title="10년의 여정" />
 
         <div ref={fadeRef} className="relative">

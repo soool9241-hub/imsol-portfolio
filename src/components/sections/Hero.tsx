@@ -11,20 +11,20 @@ export default function Hero() {
   return (
     <section
       id="소개"
-      className="relative min-h-screen flex items-center justify-center px-4 py-24 overflow-hidden noise"
+      className="relative min-h-screen flex items-center justify-center px-4 md:px-6 py-20 md:py-24 overflow-hidden noise"
     >
       {/* Radial gradient overlay */}
-      <div ref={parallaxRef} className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(64,145,108,0.08)_0%,_transparent_70%)] pointer-events-none" />
+      <div ref={parallaxRef} className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(64,145,108,0.12)_0%,_transparent_70%)] pointer-events-none" />
 
       {/* Floating decorative particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[15%] left-[10%] w-2 h-2 rounded-full bg-primary/20 animate-float" />
-        <div className="absolute top-[25%] right-[15%] w-1.5 h-1.5 rounded-full bg-primary/15 animate-float" style={{ animationDelay: "0.5s" }} />
-        <div className="absolute bottom-[30%] left-[20%] w-1 h-1 rounded-full bg-primary/25 animate-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-[60%] right-[10%] w-2.5 h-2.5 rounded-full bg-primary/10 animate-float" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-[15%] left-[10%] w-2 h-2 rounded-full bg-primary/30 animate-float" />
+        <div className="absolute top-[25%] right-[15%] w-1.5 h-1.5 rounded-full bg-primary/25 animate-float" style={{ animationDelay: "0.5s" }} />
+        <div className="absolute bottom-[30%] left-[20%] w-1 h-1 rounded-full bg-primary/35 animate-float" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-[60%] right-[10%] w-2.5 h-2.5 rounded-full bg-primary/20 animate-float" style={{ animationDelay: "1.5s" }} />
       </div>
 
-      <div className="relative max-w-6xl w-full flex flex-wrap items-center gap-16 lg:gap-24">
+      <div className="relative max-w-6xl w-full flex flex-wrap items-center gap-8 md:gap-16 lg:gap-24">
         {/* Profile image */}
         <div className="mx-auto lg:mx-0 shrink-0">
           <div className="relative">
@@ -37,7 +37,7 @@ export default function Hero() {
               ))}
             </div>
             {/* Image with gradient glow border */}
-            <div className="relative w-[280px] h-[420px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 p-[2px] bg-gradient-to-br from-primary/60 via-primary/20 to-primary-dark/40">
+            <div className="relative w-[200px] h-[300px] md:w-[280px] md:h-[420px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 p-[2px] bg-gradient-to-br from-primary/60 via-primary/20 to-primary-dark/40">
               <div className="w-full h-full rounded-[14px] overflow-hidden">
                 <Image
                   src="/images/I02.jpg"
@@ -65,7 +65,7 @@ export default function Hero() {
           <h1
             data-animate
             className="font-black text-white mb-5 text-gradient"
-            style={{ fontSize: "clamp(48px, 8vw, 80px)", lineHeight: 1.1 }}
+            style={{ fontSize: "clamp(36px, 8vw, 80px)", lineHeight: 1.1 }}
           >
             임 솔
           </h1>
@@ -82,7 +82,7 @@ export default function Hero() {
           </p>
 
           {/* Hero stats as pill badges */}
-          <div data-animate className="flex flex-wrap gap-3 mb-10">
+          <div data-animate className="flex flex-wrap gap-2 md:gap-3 mb-8 md:mb-10">
             {heroStats.map((stat) => (
               <div key={stat.label} className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 hover:border-primary/30 transition-colors duration-300">
                 <span className="font-mono text-sm text-primary font-bold">
@@ -96,14 +96,14 @@ export default function Hero() {
           </div>
 
           {/* Contact info as clickable pills */}
-          <div data-animate className="flex flex-wrap items-center gap-3">
-            <a href="tel:010-8531-9531" className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card/30 text-xs text-muted font-mono hover:border-primary/40 hover:text-foreground transition-all duration-300">
+          <div data-animate className="flex flex-wrap items-center gap-2 md:gap-3">
+            <a href="tel:010-8531-9531" className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full border border-border bg-card/30 text-[10px] md:text-xs text-muted font-mono hover:border-primary/40 hover:text-foreground transition-all duration-300">
               <span>📞</span> 010-8531-9531
             </a>
-            <span className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card/30 text-xs text-muted font-mono hover:border-primary/40 hover:text-foreground transition-all duration-300 cursor-default">
+            <span className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full border border-border bg-card/30 text-[10px] md:text-xs text-muted font-mono hover:border-primary/40 hover:text-foreground transition-all duration-300 cursor-default">
               <span>💬</span> sool9241
             </span>
-            <a href="mailto:sool9241@naver.com" className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card/30 text-xs text-muted font-mono hover:border-primary/40 hover:text-foreground transition-all duration-300">
+            <a href="mailto:sool9241@naver.com" className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full border border-border bg-card/30 text-[10px] md:text-xs text-muted font-mono hover:border-primary/40 hover:text-foreground transition-all duration-300">
               <span>✉️</span> sool9241@naver.com
             </a>
           </div>

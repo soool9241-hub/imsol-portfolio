@@ -25,9 +25,9 @@ export default function Gallery() {
 
   return (
     <section className="py-8 border-t border-b border-card overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Main display area */}
-        <div className="relative w-full h-[400px] rounded-2xl overflow-hidden mb-4 bg-black">
+        <div className="relative w-full h-[250px] md:h-[400px] rounded-2xl overflow-hidden mb-4 bg-black">
           {gallery.map((item, i) => (
             <div
               key={item.src}
@@ -56,7 +56,7 @@ export default function Gallery() {
           </div>
 
           {/* Image counter */}
-          <div className="absolute top-4 right-5 z-20 font-mono text-xs text-white/70 tracking-widest bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm">
+          <div className="absolute top-3 right-3 md:top-4 md:right-5 z-20 font-mono text-[10px] md:text-xs text-white/70 tracking-widest bg-black/40 px-2 md:px-3 py-1 md:py-1.5 rounded-full backdrop-blur-sm">
             {padIndex(currentIndex)} / {padIndex(gallery.length - 1)}
           </div>
         </div>
@@ -67,10 +67,10 @@ export default function Gallery() {
             <button
               key={item.src}
               onClick={() => handleSelect(i)}
-              className={`relative shrink-0 w-[90px] h-[60px] rounded-lg overflow-hidden transition-all duration-300 ${
+              className={`relative shrink-0 w-16 h-12 md:w-[90px] md:h-[60px] rounded-lg overflow-hidden transition-all duration-300 ${
                 i === currentIndex
                   ? "ring-2 ring-primary ring-offset-2 ring-offset-background brightness-100"
-                  : "brightness-[0.4] hover:brightness-[0.7]"
+                  : "brightness-[0.5] hover:brightness-[0.7]"
               }`}
             >
               <Image

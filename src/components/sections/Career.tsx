@@ -35,11 +35,11 @@ export default function Career() {
     .filter((group) => group.items.length > 0);
 
   return (
-    <section id="경력" className="py-20 px-6 max-w-5xl mx-auto">
+    <section id="경력" className="py-12 md:py-20 px-4 md:px-6 max-w-6xl mx-auto">
       <SectionHeader label="CAREER" title="프로젝트 경력" />
 
       {/* Filter pills */}
-      <div className="flex gap-2 flex-wrap mb-8">
+      <div className="flex gap-1.5 md:gap-2 overflow-x-auto scrollbar-none pb-2 mb-6 md:mb-8 md:flex-wrap">
         {FILTER_TAGS.map((tag) => {
           const count = tagCounts[tag] || 0;
           if (tag !== "전체" && count === 0) return null;
@@ -47,7 +47,7 @@ export default function Career() {
             <button
               key={tag}
               onClick={() => setActive(tag)}
-              className={`px-4 py-2 rounded-full text-xs font-medium cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-medium cursor-pointer transition-all duration-300 shrink-0 ${
                 active === tag
                   ? "bg-primary text-white shadow-md shadow-primary/20 scale-105"
                   : "bg-card border border-border text-muted hover:border-primary/40 hover:text-primary"
@@ -74,8 +74,7 @@ export default function Career() {
             </div>
 
             <div
-              className="grid gap-3.5 mt-4"
-              style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mt-4"
             >
               {group.items.map((item) => (
                 <div
@@ -93,7 +92,7 @@ export default function Career() {
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-primary">
                       {item.s}
                     </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#1a1a1a] text-muted">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#252830] text-muted">
                       {item.tag}
                     </span>
                   </div>

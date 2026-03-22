@@ -32,10 +32,11 @@ export default function Contact() {
   ];
 
   return (
-    <section id="문의" className="py-20 px-6 max-w-5xl mx-auto bg-[#0a0a0a]">
+    <section id="문의" className="py-12 md:py-20 bg-[#0e1118]">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
       <SectionHeader label="CONTACT" title="프로젝트 문의" />
 
-      <div ref={fadeRef} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div ref={fadeRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
         {/* Left: Contact info */}
         <div className="space-y-8">
           {/* Location */}
@@ -160,6 +161,7 @@ export default function Contact() {
             </svg>
           </button>
         </form>
+      </div>
       </div>
     </section>
   );

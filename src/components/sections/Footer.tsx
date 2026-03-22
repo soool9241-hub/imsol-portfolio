@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-border bg-[#060606] pt-16 pb-10">
+    <footer className="relative border-t border-border bg-[#0a0d12] pt-16 pb-10">
       {/* Top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
@@ -25,11 +25,11 @@ export default function Footer() {
         </button>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-12">
           {/* Left: Logo + Quote */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
+          <div className="text-center md:text-left">
+            <div className="flex items-center gap-3 mb-4 justify-center md:justify-start">
               <div className="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
                 <img
                   src="/images/I10.jpg"
@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           {/* Center: Quick links */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-mono text-xs text-primary tracking-wider uppercase mb-4">
               Quick Links
             </h4>
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           {/* Right: Contact */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-mono text-xs text-primary tracking-wider uppercase mb-4">
               Contact
             </h4>
@@ -80,7 +80,7 @@ export default function Footer() {
             </div>
 
             {/* Social / external link buttons */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {EXTERNAL_LINKS.map((link) => (
                 <a
                   key={link.text}
@@ -101,7 +101,7 @@ export default function Footer() {
         <div className="h-px bg-border mb-6" />
 
         {/* Copyright */}
-        <p className="text-[#333] text-xs text-center">
+        <p className="text-[#444] text-xs text-center">
           &copy; 2026 스토리팜. 임솔.
         </p>
       </div>

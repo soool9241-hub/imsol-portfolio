@@ -12,7 +12,7 @@ export default function Strengths() {
   return (
     <section
       id="강점"
-      className="relative py-20 px-4 bg-gradient-to-b from-background to-[#0a0f0c]"
+      className="relative py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-background to-[#121620]"
     >
       <div className="max-w-6xl mx-auto">
         <SectionHeader
@@ -47,7 +47,7 @@ export default function Strengths() {
                 </div>
 
                 {/* Right: Content */}
-                <div className="p-6 md:p-8 flex-1 transition-transform duration-300 group-hover:-translate-y-1">
+                <div className="p-4 md:p-8 flex-1 transition-transform duration-300 group-hover:-translate-y-1">
                   {/* Number + Icon + tag */}
                   <div className="flex items-center gap-3 mb-3">
                     <span className="font-mono text-xs text-primary/50 font-bold">

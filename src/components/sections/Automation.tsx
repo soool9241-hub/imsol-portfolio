@@ -9,10 +9,10 @@ export default function Automation() {
   const statsRef = useFadeUp<HTMLDivElement>();
 
   return (
-    <section id="자동화" className="relative py-20 px-6 max-w-5xl mx-auto overflow-hidden">
+    <section id="자동화" className="relative py-12 md:py-20 px-4 md:px-6 max-w-6xl mx-auto overflow-hidden">
       {/* Circuit/grid pattern background */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{
           backgroundImage: `
             linear-gradient(rgba(64,145,108,0.3) 1px, transparent 1px),
@@ -44,7 +44,7 @@ export default function Automation() {
                 />
 
                 <div
-                  className="md:ml-20 bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+                  className="md:ml-20 bg-card border border-border rounded-2xl p-4 md:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
                   style={{
                     background: `linear-gradient(135deg, #111 0%, ${team.c}08 100%)`,
                   }}
@@ -85,7 +85,7 @@ export default function Automation() {
                 className="relative text-center p-6 bg-card rounded-2xl border border-primary/10 overflow-hidden group hover:border-primary/30 transition-all"
               >
                 {/* Circular progress visual */}
-                <div className="relative w-20 h-20 mx-auto mb-3">
+                <div className="relative w-16 h-16 md:w-20 md:h-20 mx-auto mb-3">
                   <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
                     <path
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"

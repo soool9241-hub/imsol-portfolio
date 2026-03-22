@@ -10,7 +10,8 @@ export default function Collabs() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="콜라보" className="py-20 px-6 max-w-5xl mx-auto bg-[#0a0a0a]">
+    <section id="콜라보" className="py-12 md:py-20 bg-[#0e1118]">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
       <SectionHeader label="COLLABORATION" title="브랜드 콜라보 & 제조 기획" />
 
       <div
@@ -32,11 +33,11 @@ export default function Collabs() {
             {/* Top gradient accent */}
             <div className="h-1.5 w-full bg-gradient-to-r from-primary via-primary/60 to-transparent" />
 
-            <div className="p-7">
+            <div className="p-4 md:p-7">
               {/* Large emoji visual */}
-              <div className="flex items-start gap-5 mb-4">
+              <div className="flex items-start gap-3 md:gap-5 mb-4">
                 <div
-                  className={`text-5xl transition-all duration-500 ${
+                  className={`text-3xl md:text-5xl transition-all duration-500 ${
                     hoveredIndex === i ? "scale-125 rotate-[-12deg]" : ""
                   }`}
                 >
@@ -66,6 +67,7 @@ export default function Collabs() {
             />
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

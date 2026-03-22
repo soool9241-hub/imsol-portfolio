@@ -8,21 +8,20 @@ export default function Metrics() {
   const fadeRef = useFadeUp<HTMLDivElement>();
 
   return (
-    <section id="성과" className="py-20 px-6 max-w-5xl mx-auto">
+    <section id="성과" className="py-12 md:py-20 px-4 md:px-6 max-w-6xl mx-auto">
       <SectionHeader label="ACHIEVEMENTS" title="핵심 성과" />
 
       <div
         ref={fadeRef}
-        className="grid gap-5"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5"
       >
         {metrics.map((m) => (
           <div
             key={m.u}
             data-animate
-            className="relative border border-border rounded-2xl p-8 text-center overflow-hidden group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+            className="relative border border-border rounded-2xl p-4 md:p-8 text-center overflow-hidden group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             style={{
-              backgroundColor: `${m.c}08`,
+              backgroundColor: `${m.c}18`,
               borderTopWidth: "3px",
               borderTopColor: m.c,
             }}
@@ -38,7 +37,7 @@ export default function Metrics() {
             />
 
             <div
-              className="font-mono text-5xl md:text-6xl font-black relative z-10"
+              className="font-mono text-3xl md:text-5xl lg:text-6xl font-black relative z-10"
               style={{ color: m.c }}
             >
               {m.n}
