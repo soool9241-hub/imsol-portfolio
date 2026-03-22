@@ -7,22 +7,40 @@ import { useFadeUp } from "@/lib/useScrollAnimation";
 export default function Lectures() {
   const fadeRef = useFadeUp<HTMLDivElement>();
 
+  const icons = ["🏝️", "🎓", "💰", "🔬", "🏛️"];
+
   return (
     <section id="교육" className="py-20 px-6 max-w-5xl mx-auto bg-[#0a0a0a]">
       <SectionHeader label="LECTURES" title="강연 & 자문" />
 
-      <div ref={fadeRef}>
-        {lectures.map((l) => (
+      <div ref={fadeRef} className="space-y-3">
+        {lectures.map((l, i) => (
           <div
             key={l.t}
             data-animate
-            className="flex justify-between items-center p-3.5 px-5 bg-card rounded-xl border border-border mb-2 transition-colors hover:border-primary-dark"
+            className="group flex items-center gap-4 p-4 px-5 bg-card rounded-xl border border-border transition-all duration-300 hover:border-primary/50 hover:translate-x-2 hover:shadow-md hover:shadow-primary/5 relative overflow-hidden"
           >
-            <div>
+            {/* Left green accent on hover */}
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+
+            {/* Index */}
+            <span className="font-mono text-xs text-primary/40 font-bold w-6 text-center shrink-0">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            {/* Icon */}
+            <span className="text-2xl shrink-0">{icons[i] || "🎤"}</span>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
               <h3 className="text-sm font-semibold text-foreground">{l.t}</h3>
               <p className="text-xs text-dim mt-0.5">{l.d}</p>
             </div>
-            <span className="font-mono text-sm text-primary">{l.y}</span>
+
+            {/* Date badge */}
+            <span className="font-mono text-xs text-primary bg-primary/10 px-3 py-1 rounded-full shrink-0">
+              {l.y}
+            </span>
           </div>
         ))}
       </div>

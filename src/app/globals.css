@@ -14,12 +14,20 @@
   --font-mono: var(--font-dm-mono);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
 ::selection { background: #40916C; color: #fff; }
 
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
+/* Custom cursor */
+body { cursor: none; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #40916C, #2D6A4F); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #52B788, #40916C); }
 
 body {
   background: #080808;
@@ -27,6 +35,54 @@ body {
   font-family: var(--font-sans), 'Noto Sans KR', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* Utility classes */
+.glow {
+  box-shadow: 0 0 20px rgba(64,145,108,0.15), 0 0 60px rgba(64,145,108,0.05);
+}
+
+.glass {
+  background: rgba(17,17,17,0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #40916C, #52B788, #2D6A4F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animated-underline {
+  position: relative;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #40916C;
+  transition: width 0.3s;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1a1a1a, #40916C, #1a1a1a, transparent);
+}
+
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
 }
 
 /* Animations */
@@ -46,7 +102,16 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(64,145,108,0.2); }
+  50% { box-shadow: 0 0 20px rgba(64,145,108,0.4); }
+}
 
 .animate-fu { animation: fu 0.8s ease-out both; }
 .animate-sr { animation: sr 0.5s ease-out both; }
 .animate-fi { animation: fi 0.6s ease-out both; }
+.animate-float { animation: float 3s ease-in-out infinite; }

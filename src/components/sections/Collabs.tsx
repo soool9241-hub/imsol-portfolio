@@ -15,8 +15,7 @@ export default function Collabs() {
 
       <div
         ref={fadeRef}
-        className="grid gap-4"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))" }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-5"
       >
         {collabs.map((c, i) => (
           <div
@@ -24,37 +23,47 @@ export default function Collabs() {
             data-animate
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className={`relative bg-card border rounded-2xl p-7 transition-all duration-300 overflow-hidden ${
+            className={`relative bg-card border rounded-2xl overflow-hidden transition-all duration-300 ${
               hoveredIndex === i
-                ? "border-primary -translate-y-1.5 shadow-lg shadow-primary/10"
+                ? "border-primary -translate-y-2 shadow-xl shadow-primary/15"
                 : "border-border"
             }`}
           >
+            {/* Top gradient accent */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-primary via-primary/60 to-transparent" />
+
+            <div className="p-7">
+              {/* Large emoji visual */}
+              <div className="flex items-start gap-5 mb-4">
+                <div
+                  className={`text-5xl transition-all duration-500 ${
+                    hoveredIndex === i ? "scale-125 rotate-[-12deg]" : ""
+                  }`}
+                >
+                  {c.emoji}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-black text-white">{c.name}</h3>
+                  <p className="text-xs text-dim mt-0.5">{c.sub}</p>
+                </div>
+              </div>
+
+              <p className="text-sm text-muted mb-5 leading-relaxed">{c.desc}</p>
+
+              {/* Role badge - more prominent */}
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono text-dim uppercase tracking-wider">역할</span>
+                <span className="text-xs px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-primary font-semibold">
+                  {c.role}
+                </span>
+              </div>
+            </div>
+
             {/* Bottom bar animation */}
             <div
               className="absolute bottom-0 left-0 w-full h-[3px] bg-primary transition-transform duration-300 origin-left"
               style={{ transform: hoveredIndex === i ? "scaleX(1)" : "scaleX(0)" }}
             />
-
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-xl font-black text-white">{c.name}</h3>
-                <p className="text-xs text-dim">{c.sub}</p>
-              </div>
-              <span
-                className={`text-3xl transition-transform duration-300 ${
-                  hoveredIndex === i ? "scale-[1.3] rotate-[-10deg]" : ""
-                }`}
-              >
-                {c.emoji}
-              </span>
-            </div>
-
-            <p className="text-sm text-muted mb-4">{c.desc}</p>
-
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-primary">
-              {c.role}
-            </span>
           </div>
         ))}
       </div>

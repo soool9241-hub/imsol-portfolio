@@ -21,56 +21,66 @@ export default function Strengths() {
           subtitle={`\u201C서툴지만 진심을 다해, 끈임없이 만들고, 배우고, 나누는 메이커\u201D`}
         />
 
-        <div
-          ref={fadeRef}
-          className="grid gap-5"
-          style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          }}
-        >
-          {strengths.map((s) => (
-            <Card key={s.tag} data-animate className="p-0 overflow-hidden">
-              {/* Image */}
-              <div className="relative h-40 w-full">
-                <Image
-                  src={s.img}
-                  alt={s.tag}
-                  fill
-                  className="object-cover rounded-t-2xl"
-                  sizes="(max-width: 768px) 100vw, 260px"
-                />
+        <div ref={fadeRef} className="space-y-6">
+          {strengths.map((s, idx) => (
+            <div
+              key={s.tag}
+              data-animate
+              className="group relative bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+            >
+              {/* Large faded number behind */}
+              <div className="absolute top-4 right-6 font-mono text-[80px] font-black text-white/[0.03] leading-none select-none pointer-events-none z-0">
+                {String(idx + 1).padStart(2, "0")}
               </div>
 
-              <div className="p-5">
-                {/* Icon + tag */}
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-lg">{s.icon}</span>
-                  <span className="font-mono text-xs text-primary tracking-wider">
-                    {s.tag}
-                  </span>
+              <div className="flex flex-col md:flex-row relative z-10">
+                {/* Left: Image */}
+                <div className="relative w-full md:w-[280px] h-48 md:h-auto shrink-0 overflow-hidden">
+                  <Image
+                    src={s.img}
+                    alt={s.tag}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 280px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden md:block" />
                 </div>
 
-                {/* Quote */}
-                <p className="text-sm text-muted italic border-l-2 border-primary-dark pl-3 mb-4">
-                  {s.quote}
-                </p>
+                {/* Right: Content */}
+                <div className="p-6 md:p-8 flex-1 transition-transform duration-300 group-hover:-translate-y-1">
+                  {/* Number + Icon + tag */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="font-mono text-xs text-primary/50 font-bold">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-xl">{s.icon}</span>
+                    <span className="font-mono text-xs text-primary tracking-wider font-medium">
+                      {s.tag}
+                    </span>
+                  </div>
 
-                {/* Bullet points */}
-                <ul className="space-y-1.5">
-                  {s.pts.map((pt) => (
-                    <li
-                      key={pt}
-                      className="text-xs text-dim flex items-start gap-2"
-                    >
-                      <span className="text-primary mt-0.5 text-[8px]">
-                        &#9654;
-                      </span>
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
+                  {/* Quote */}
+                  <blockquote className="text-base text-muted italic border-l-2 border-primary pl-4 mb-5 leading-relaxed">
+                    &ldquo;{s.quote}&rdquo;
+                  </blockquote>
+
+                  {/* Bullet points */}
+                  <ul className="space-y-2">
+                    {s.pts.map((pt) => (
+                      <li
+                        key={pt}
+                        className="text-sm text-dim flex items-start gap-2"
+                      >
+                        <span className="text-primary mt-0.5 text-[8px]">
+                          &#9654;
+                        </span>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

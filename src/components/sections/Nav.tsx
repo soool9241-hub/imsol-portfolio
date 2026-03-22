@@ -6,10 +6,15 @@ import { NAV_ITEMS } from "@/lib/data";
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      setScrollProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -45,37 +50,52 @@ export default function Nav() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#080808]/92 backdrop-blur-xl border-b border-[#151515]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center gap-6">
-        <button
-          onClick={() => scrollTo("소개")}
-          className="font-mono font-bold text-primary text-lg shrink-0"
-        >
-          SOL.
-        </button>
-
-        <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className={`font-mono text-xs px-3 py-1.5 rounded-md whitespace-nowrap transition-colors ${
-                activeSection === item
-                  ? "text-foreground bg-primary/12"
-                  : "text-dim hover:text-muted"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
+    <>
+      {/* Scroll progress bar */}
+      <div className="fixed top-0 left-0 right-0 z-[60] h-[2px]">
+        <div
+          className="h-full bg-primary transition-[width] duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
-    </nav>
+
+      <nav
+        className={`fixed top-[2px] left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "glass"
+            : "bg-transparent"
+        }`}
+      >
+        <div className={`max-w-6xl mx-auto px-4 flex items-center gap-6 transition-all duration-500 ${
+          scrolled ? "h-12" : "h-16"
+        }`}>
+          <button
+            onClick={() => scrollTo("소개")}
+            className="font-mono font-bold text-primary text-lg shrink-0 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(64,145,108,0.6)]"
+          >
+            SOL.
+          </button>
+
+          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollTo(item)}
+                className={`relative font-mono text-xs px-3 py-1.5 whitespace-nowrap transition-colors duration-300 animated-underline ${
+                  activeSection === item
+                    ? "text-foreground"
+                    : "text-dim hover:text-muted"
+                }`}
+              >
+                {item}
+                {activeSection === item && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }

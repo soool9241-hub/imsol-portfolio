@@ -1,53 +1,107 @@
 "use client";
 
-import SectionHeader from "@/components/ui/SectionHeader";
-import { EXTERNAL_LINKS } from "@/lib/data";
+import { EXTERNAL_LINKS, NAV_ITEMS } from "@/lib/data";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="border-t border-border bg-[#060606] pt-20 pb-10 text-center">
+    <footer className="relative border-t border-border bg-[#060606] pt-16 pb-10">
+      {/* Top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+      {/* Back to top button */}
+      <div className="flex justify-center -mt-24 mb-10">
+        <button
+          onClick={scrollToTop}
+          className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+          aria-label="맨 위로"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 15l-6-6-6 6" />
+          </svg>
+        </button>
+      </div>
+
       <div className="max-w-5xl mx-auto px-6">
-        {/* Profile image */}
-        <div className="w-20 h-20 rounded-full border-2 border-primary mx-auto mb-4 overflow-hidden">
-          <img
-            src="/images/I10.jpg"
-            alt="SOL"
-            className="w-full h-full object-cover"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+          {/* Left: Logo + Quote */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
+                <img
+                  src="/images/I10.jpg"
+                  alt="SOL"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="font-mono text-xl font-bold text-primary">SOL.</div>
+            </div>
+            <p className="text-dim text-sm italic leading-relaxed">
+              &ldquo;달팽이처럼 천천히, 하지만 정성을 담아 준비하겠습니다.&rdquo;
+            </p>
+          </div>
+
+          {/* Center: Quick links */}
+          <div>
+            <h4 className="font-mono text-xs text-primary tracking-wider uppercase mb-4">
+              Quick Links
+            </h4>
+            <div className="grid grid-cols-2 gap-2">
+              {NAV_ITEMS.slice(0, 8).map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  className="text-sm text-muted hover:text-primary transition-colors py-1"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Contact */}
+          <div>
+            <h4 className="font-mono text-xs text-primary tracking-wider uppercase mb-4">
+              Contact
+            </h4>
+            <div className="space-y-2 text-sm text-muted mb-5">
+              <div className="flex items-center gap-2">
+                <span>📞</span> 010-8531-9531
+              </div>
+              <div className="flex items-center gap-2">
+                <span>💬</span> sool9241
+              </div>
+              <div className="flex items-center gap-2">
+                <span>✉️</span> sool9241@naver.com
+              </div>
+            </div>
+
+            {/* Social / external link buttons */}
+            <div className="flex flex-wrap gap-2">
+              {EXTERNAL_LINKS.map((link) => (
+                <a
+                  key={link.text}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center text-sm hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-0.5"
+                  title={link.text}
+                >
+                  {link.emoji}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Logo */}
-        <div className="font-mono text-xl font-bold text-primary mb-2">SOL.</div>
-
-        {/* Quote */}
-        <p className="text-dim text-sm italic mb-6">
-          &ldquo;달팽이처럼 천천히, 하지만 정성을 담아 준비하겠습니다.&rdquo;
-        </p>
-
-        {/* Contact info */}
-        <div className="flex flex-wrap justify-center gap-4 text-xs text-muted mb-6">
-          <span>📞 010-8531-9531</span>
-          <span>💬 sool9241</span>
-          <span>✉️ sool9241@naver.com</span>
-        </div>
-
-        {/* External links */}
-        <div className="flex justify-center gap-5 mb-10">
-          {EXTERNAL_LINKS.map((link) => (
-            <a
-              key={link.text}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary text-xs hover:underline"
-            >
-              {link.emoji} {link.text}
-            </a>
-          ))}
-        </div>
+        {/* Divider */}
+        <div className="h-px bg-border mb-6" />
 
         {/* Copyright */}
-        <p className="text-[#222] text-xs">
+        <p className="text-[#333] text-xs text-center">
           &copy; 2026 스토리팜. 임솔.
         </p>
       </div>
