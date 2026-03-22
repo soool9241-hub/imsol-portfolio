@@ -41,7 +41,7 @@ export default function Pension() {
                 </span>
                 <div className="flex-1 h-8 md:h-12 bg-[#1c1f28] rounded-full overflow-hidden">
                   <div
-                    className="h-full rounded-full flex items-center pl-4"
+                    className="h-full rounded-full flex items-center pl-2 md:pl-4"
                     data-bar={pct}
                     style={{
                       width: 0,

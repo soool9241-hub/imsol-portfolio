@@ -25,7 +25,7 @@ export default function Gallery() {
 
   return (
     <section className="py-8 border-t border-b border-card overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Main display area */}
         <div className="relative w-full h-[250px] md:h-[400px] rounded-2xl overflow-hidden mb-4 bg-black">
           {gallery.map((item, i) => (

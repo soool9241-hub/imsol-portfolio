@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       {/* Back to top button */}
-      <div className="flex justify-center -mt-24 mb-10">
+      <div className="flex justify-center -mt-22 md:-mt-24 mb-8 md:mb-10">
         <button
           onClick={scrollToTop}
           className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 shadow-lg"
